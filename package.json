@@ -3,6 +3,9 @@
 	"version": "1.0.0",
 	"description": "Backend project for Automatic Power Management System",
 	"main": "index.js",
+	"engines": {
+		"node": ">=14.20.1"
+	},
 	"scripts": {
 		"dev": "nodemon index.js"
 	},
