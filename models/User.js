@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	meterNo: {
+	meterNumber: {
 		type: String,
 		required: true
 	},
