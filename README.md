@@ -2,6 +2,8 @@
 
 This repo contains the backend structure for the web app of the Automatic Power Management System, with Multi-Grid Power Supply: a final year project for Group 1, Computer Engineering, University of Ilorin.
 
+Live Link - https://autopms.onrender.com/api/v1
+
 ### Entities
 
 1. User - A user would have a **name**, **meter-number**, **email**, and **password**.
