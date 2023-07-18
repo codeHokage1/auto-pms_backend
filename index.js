@@ -1,5 +1,12 @@
 const express = require('express');
+require('dotenv').config();
+
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+
+const connectDB = require('./config/dbConfig');
 
 const authRoutes = require('./routes/authRoutes');
 const usersRoutes = require('./routes/usersRoutes');
@@ -11,6 +18,8 @@ app.get('/api/v1', (req, res) => {
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', usersRoutes);
 
-app.listen(3000, () => {
-   console.log("Server is listening on port 3000");
+const PORT = process.env.PORT || 3000;
+connectDB();
+app.listen(PORT, () => {
+   console.log(`Server is listening on port ${PORT}`);
 })
