@@ -5,9 +5,8 @@ const usersController = require("../controllers/usersController");
 
 router
 	.get("/", usersController.getAllUsers)
-	.get("/:userId", (req, res) => {
-		res.send("One user's data");
-	})
+	.get("/:userId", usersController.getOneUser)
+
 	.post("/:userId", (req, res) => {
 		res.send("Send details for a user");
 	})
