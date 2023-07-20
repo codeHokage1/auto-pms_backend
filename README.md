@@ -31,11 +31,32 @@ password:{
 }
 ```
 
+1. **Meter Data:**
+
+```
+dateTime: {
+    type: Date,
+    required: true
+},
+meterNumber: {
+    type: String,
+    required: true
+},
+voltage: {
+    type: Number,
+    required: true
+},
+current: {
+    type: Number,
+    required: true
+}
+```
+
 ### API Endpoints
 
-1. **Users**
+1. **Auth**
 
-   _NOTE_: that no 2 users are allowed to have the same email address
+_NOTE_: that no 2 users are allowed to have the same email address
 
 ```
 POST /api/v1/auth/register  - Create a new user
@@ -48,6 +69,24 @@ POST /api/v1/auth/login     - Login a user
 {
     "email": "abc@gmail.com",
     "password": "test123"
+}
+```
+
+2. **Meter Data**
+
+_NOTE_: that you can not send data for an unregistered meter
+
+```
+GET /api/v1/auth/data  - Get all meters' data
+
+GET /api/v1/auth/data/:meterNo  - Get all data for a particular meter
+
+POST /api/v1/auth/data/:meterNo  - Send data for a particular meter
+{
+  "dateTime": "Mon 17 August 2023",
+  "meterNumber": "A12",
+  "voltage": 230,
+  "current": 3.2
 }
 ```
 
