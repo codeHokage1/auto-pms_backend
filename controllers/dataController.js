@@ -18,7 +18,7 @@ try {
 
 	// Initialize Realtime Database and get a reference to the service
 	database = getDatabase(firebaseApp);
-	console.log("Connected to DB!");
+	console.log("Connected to Firebase DB!");
 } catch (error) {
 	console.log(error);
 }
