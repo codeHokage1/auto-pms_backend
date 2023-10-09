@@ -74,6 +74,7 @@ exports.getDataByMeter = async (req, res) => {
 					message: "Apartment A Data",
 					info: [{
 						meterNo: "A100",
+						apartment: "A",
 						units: 100,
 						...data
 					}]
@@ -87,6 +88,7 @@ exports.getDataByMeter = async (req, res) => {
 					message: "Apartment B Data",
 					info: [{
 						meterNo: "A200",
+						apartment: "B",
 						units: 100,
 						...data
 					}]
