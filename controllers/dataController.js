@@ -72,7 +72,11 @@ exports.getDataByMeter = async (req, res) => {
 				const data = snapshot.val();
 				return res.json({
 					message: "Apartment A Data",
-					data
+					info: [{
+						meterNo: "A100",
+						units: 100,
+						...data
+					}]
 				});
 			});
 		} else if (meterNo === "A200") {
@@ -81,7 +85,11 @@ exports.getDataByMeter = async (req, res) => {
 				const data = snapshot.val();
 				return res.json({
 					message: "Apartment B Data",
-					data
+					info: [{
+						meterNo: "A200",
+						units: 100,
+						...data
+					}]
 				});
 			});
 		} else {
