@@ -35,13 +35,27 @@ exports.getAllData = async (req, res) => {
 		const aprtARef = ref(database, "APARTMENT A/");
 		await onValue(aprtARef, (snapshot) => {
 			const data = snapshot.val();
-			fullData.push({ apartmentA: data });
+			fullData.push({
+				apartmentA: {
+					meterNo: "A100",
+					apartment: "A",
+					units: 100,
+					...data
+				}
+			});
 		});
 
 		const aprtBRef = ref(database, "APARTMENT B/");
 		await onValue(aprtBRef, (snapshot) => {
 			const data = snapshot.val();
-			fullData.push({ apartmentB: data });
+			fullData.push({
+				apartmentB: {
+					meterNo: "A200",
+					apartment: "B",
+					units: 100,
+					...data
+				}
+			});
 		});
 
 		return res.json({
@@ -72,12 +86,14 @@ exports.getDataByMeter = async (req, res) => {
 				const data = snapshot.val();
 				return res.json({
 					message: "Apartment A Data",
-					info: [{
-						meterNo: "A100",
-						apartment: "A",
-						units: 100,
-						...data
-					}]
+					info: [
+						{
+							meterNo: "A100",
+							apartment: "A",
+							units: 100,
+							...data
+						}
+					]
 				});
 			});
 		} else if (meterNo === "A200") {
@@ -86,12 +102,14 @@ exports.getDataByMeter = async (req, res) => {
 				const data = snapshot.val();
 				return res.json({
 					message: "Apartment B Data",
-					info: [{
-						meterNo: "A200",
-						apartment: "B",
-						units: 100,
-						...data
-					}]
+					info: [
+						{
+							meterNo: "A200",
+							apartment: "B",
+							units: 100,
+							...data
+						}
+					]
 				});
 			});
 		} else {
