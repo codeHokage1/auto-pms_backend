@@ -29,19 +29,20 @@ exports.getAllData = async (req, res) => {
 		const atsRef = ref(database, "ATS/");
 		await onValue(atsRef, (snapshot) => {
 			const data = snapshot.val();
-			fullData.push({ ats: data });
+			fullData.push({
+				...data,
+				apartment: "ats"
+			});
 		});
 
 		const aprtARef = ref(database, "APARTMENT A/");
 		await onValue(aprtARef, (snapshot) => {
 			const data = snapshot.val();
 			fullData.push({
-				apartmentA: {
-					meterNo: "A100",
-					apartment: "A",
-					units: 100,
-					...data
-				}
+				meterNo: "A100",
+				apartment: "A",
+				units: 100,
+				...data
 			});
 		});
 
@@ -49,12 +50,10 @@ exports.getAllData = async (req, res) => {
 		await onValue(aprtBRef, (snapshot) => {
 			const data = snapshot.val();
 			fullData.push({
-				apartmentB: {
-					meterNo: "A200",
-					apartment: "B",
-					units: 100,
-					...data
-				}
+				meterNo: "A200",
+				apartment: "B",
+				units: 100,
+				...data
 			});
 		});
 
