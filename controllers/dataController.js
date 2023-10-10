@@ -26,18 +26,13 @@ try {
 exports.getAllData = async (req, res) => {
 	try {
 		const fullData = [];
-		const atsRef = ref(database, "ATS/");
-		await onValue(atsRef, (snapshot) => {
-			const data = snapshot.val();
-			fullData.push({
-				...data,
-				apartment: "ats"
-			});
-		});
 
 		const aprtARef = ref(database, "APARTMENT A/");
+		let apartAVoltage = 0;
 		await onValue(aprtARef, (snapshot) => {
 			const data = snapshot.val();
+
+			apartAVoltage = data.VOLTAGE;
 			fullData.push({
 				meterNo: "A100",
 				apartment: "A",
@@ -54,6 +49,16 @@ exports.getAllData = async (req, res) => {
 				apartment: "B",
 				units: 100,
 				...data
+			});
+		});
+
+		const atsRef = ref(database, "ATS/");
+		await onValue(atsRef, (snapshot) => {
+			const data = snapshot.val();
+			fullData.push({
+				...data,
+				apartment: "ats",
+				VOLTAGE: apartAVoltage
 			});
 		});
 
